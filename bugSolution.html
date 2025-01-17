@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv">
+    This is some text.
+  </div>
+
+  <script>
+    // Correctly handling dynamically created elements
+    const div = document.createElement('div');
+    div.id = 'newDiv';
+    // Check if the property exists before accessing it
+    if (div.hasOwnProperty('nonExistentProperty')) {
+      console.log(div.nonExistentProperty);
+    } else {
+      console.log('Property does not exist');
+    }
+    document.body.appendChild(div);
+
+    // Correctly handling innerHTML on potentially non-existent elements
+    const element = document.getElementById('nonExistent');
+    if (element) {
+      element.innerHTML = 'This will not cause an error.';
+    } else {
+      console.log('Element does not exist');
+    }
+  </script>
+</body>
+</html>
